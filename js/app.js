@@ -36,25 +36,27 @@ let winner = null
 
 /*------------------------ Cached Element References ------------------------*/
 
-const squareEls = document.querySelectorAll('.square')
 const messageEl = document.querySelector('#message')
+const squareEls = document.querySelectorAll('.square')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
 squareEls.forEach(function(square){
-  // square.addEventListener('click', handleClick)
+  square.addEventListener("click", handleClick())
 })
 
 /*-------------------------------- Functions --------------------------------*/
 
-function init () {
+init()
+
+function init() {
   board = [null, null, null, null, null, null, null, null, null]
   turn = 1
   winner = null
   render ()
 }
 
-function render () {
+function render() {
   board.forEach(function(square, idx){
     if (square === 1) {
       squareEls[idx].textContent ='X'
@@ -70,4 +72,17 @@ function render () {
       messageEl.textContent = "Cat's Game!"
     }
   })
+}
+
+function handleClick(evt){
+  const sqIdx = parseInt(evt.target.id.substring(2))
+  if (board[sqIdx] !== null){
+    return 
+  } if (winner !== null){
+    return 
+  }
+  board[sqIdx] = turn
+  turn = turn * (-1)
+  // getWinner ()
+  render ()
 }
