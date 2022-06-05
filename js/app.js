@@ -42,7 +42,8 @@ const squareEls = document.querySelectorAll('.square')
 /*----------------------------- Event Listeners -----------------------------*/
 
 squareEls.forEach(function(square){
-  square.addEventListener("click", handleClick())
+  square.addEventListener('click', handleClick)
+
 })
 
 /*-------------------------------- Functions --------------------------------*/
@@ -67,7 +68,7 @@ function render() {
 
   }
     if (winner === null){
-      messageEl.textContent = `Player ${turn === 1 ? "X" : "O"}'s turn `
+      messageEl.textContent = `Player ${turn === 1 ? "X" : "O"}'s turn`
     } else if (winner === 'T'){
       messageEl.textContent = "Cat's Game!"
     }
@@ -83,6 +84,25 @@ function handleClick(evt){
   }
   board[sqIdx] = turn
   turn = turn * (-1)
-  // getWinner ()
+  getWinner ()
   render ()
 }
+
+function getWinner() {
+  let sum
+  for (let i = 0; i < winningCombos.length; i++){
+    sum = board[winningCombos[i][0]] + board[winningCombos[i][1]] + board[winningCombos[i][2]]
+    Math.abs(sum)
+    if (sum === 3){
+      winner = turn
+      messageEl.textContent = `Player ${turn === 1 ? "O" : "X"} wins!`
+      return
+    }
+    else if (board.includes(null) === false){
+    winner =  'T'
+    return
+    }else {
+    winner = null
+    }
+  }
+} 
