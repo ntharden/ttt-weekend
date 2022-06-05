@@ -42,7 +42,7 @@ const messageEl = document.querySelector('#message')
 /*----------------------------- Event Listeners -----------------------------*/
 
 squareEls.forEach(function(square){
-  square.addEventListener('click', handleClick)
+  // square.addEventListener('click', handleClick)
 })
 
 /*-------------------------------- Functions --------------------------------*/
@@ -54,3 +54,20 @@ function init () {
   render ()
 }
 
+function render () {
+  board.forEach(function(square, idx){
+    if (square === 1) {
+      squareEls[idx].textContent ='X'
+    } else if (square === -1) {
+      squareEls[idx].textContent = 'O'
+    } else if (square === null) {
+      squareEls[idx].textContent = null
+
+  }
+    if (winner === null){
+      messageEl.textContent = `Player ${turn === 1 ? "X" : "O"}'s turn `
+    } else if (winner === 'T'){
+      messageEl.textContent = "Cat's Game!"
+    }
+  })
+}
