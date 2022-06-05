@@ -93,7 +93,8 @@ function getWinner() {
   let sum
   for (let i = 0; i < winningCombos.length; i++){
     sum = board[winningCombos[i][0]] + board[winningCombos[i][1]] + board[winningCombos[i][2]]
-    Math.abs(sum)
+    sum = Math.abs(sum)
+    console.log(sum)
     if (sum === 3){
       winner = turn
       messageEl.textContent = `Player ${turn === 1 ? "O" : "X"} wins!`
@@ -106,4 +107,5 @@ function getWinner() {
     winner = null
     }
   }
-} 
+}
+
