@@ -38,13 +38,14 @@ let winner = null
 
 const messageEl = document.querySelector('#message')
 const squareEls = document.querySelectorAll('.square')
+const resetBtnEl = document.querySelector('#resetBtn')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
 squareEls.forEach(function(square){
   square.addEventListener('click', handleClick)
-
 })
+resetBtnEl.addEventListener('click', init )
 
 /*-------------------------------- Functions --------------------------------*/
 
